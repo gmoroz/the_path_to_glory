@@ -1,0 +1,2 @@
+marshmallow==3.19.0
+marshmallow_dataclass==8.5.10
