@@ -1,7 +1,5 @@
 from dataclasses import dataclass
-
-
-
+from skills import ConcreteSkill
 
 
 @dataclass
