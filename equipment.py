@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import json
+from random import uniform
 import marshmallow
 import marshmallow_dataclass
 
@@ -11,6 +12,9 @@ class Weapon:
     min_damage: float
     max_damage: float
     stamina_per_hit: float
+
+    def calc_damage(self) -> float:
+        return round(uniform(self.min_damage, self.max_damage), 1)
 
 
 @dataclass
