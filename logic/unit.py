@@ -71,6 +71,6 @@ class EnemyUnit(BaseUnit):
             self.stamina -= self.weapon.stamina_per_hit
             damage = self._count_damage(target)
             if damage > 0:
-                f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} и наносит Вам {damage} урона."
-            f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name} его останавливает."
-        f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
+                return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} и наносит Вам {damage} урона."
+            return f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name} его останавливает."
+        return f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
