@@ -12,8 +12,6 @@ class Skill(ABC):
     name: str
     stamina: float
     damage: float
-    user: None | BaseUnit = None
-    target: None | BaseUnit = None
 
     @abstractmethod
     def skill_effect(self):
