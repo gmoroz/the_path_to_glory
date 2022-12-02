@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from skills import ConcreteSkill
+from logic.skills import ConcreteSkill
 
 
 @dataclass

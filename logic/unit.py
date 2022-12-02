@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from random import choice
 from classes import UnitClass
-from equipment import Armor, Weapon
+from logic.equipment import Armor, Weapon
 
 
 class BaseUnit(ABC):
