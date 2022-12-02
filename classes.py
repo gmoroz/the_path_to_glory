@@ -1,11 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass
-class ConcreteSkill:
-    name: str
-    stamina_consumption: float
-    damage: float
+
 
 
 @dataclass

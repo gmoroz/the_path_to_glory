@@ -28,14 +28,14 @@
   {
     "name": "Маг",
     "max_health": "35.0",
-    "max_stamina": "12.0",
+    "max_stamina": "16.0",
     "attack": "0.5",
-    "stamina": "3.0",
+    "stamina": "2.0",
     "armor": "1.0",
     "skill": {
-      "name": "Мощный укол",
-      "stamina_consumption": "5",
-      "damage": "15"
+      "name": "Огненный шар",
+      "stamina_consumption": "16",
+      "damage": "30"
     }
   }
 ]
