@@ -1,7 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from random import choice
-from classes import UnitClass
+from logic.classes import UnitClass
 from logic.equipment import Armor, Weapon
 
 

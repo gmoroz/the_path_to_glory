@@ -1,8 +1,8 @@
-from dataclasses import dataclass
-import json
-from random import uniform
 import marshmallow
 import marshmallow_dataclass
+import json
+from dataclasses import dataclass
+from random import uniform
 
 
 @dataclass
@@ -65,7 +65,4 @@ class Equipment:
         with open("data/equipment.json") as file:
             data = json.load(file)
         equipment_schema = marshmallow_dataclass.class_schema(Equipment)
-        try:
-            return equipment_schema().load(data)
-        except marshmallow.exceptions.ValidationError:
-            raise ValueError
+        return equipment_schema().load(data)
