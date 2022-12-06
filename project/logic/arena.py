@@ -23,7 +23,7 @@ class Arena(metaclass=BaseSingleton):
         self.enemy = enemy
         self.game_is_running = True
 
-    def _check_players_hp(self) -> True | None:
+    def _check_players_hp(self) -> bool | None:
         if self.player.hp <= 0:
             self.battle_result = "Игрок проиграл битву"
             return True

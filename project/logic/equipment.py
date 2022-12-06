@@ -1,7 +1,7 @@
 import marshmallow
 import marshmallow_dataclass
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from random import uniform
 
 
@@ -27,8 +27,8 @@ class Armor:
 
 @dataclass
 class EquipmentData:
-    list_of_weapons: list[Weapon]
-    list_of_armors: list[Armor]
+    weapons: field(default_factory=list)
+    armors: field(default_factory=list)
 
     class Meta:
         unknown = marshmallow.EXCLUDE
@@ -62,7 +62,7 @@ class Equipment:
 
     @staticmethod
     def _get_equipment_data() -> EquipmentData:
-        with open("data/equipment.json") as file:
+        with open("project/data/equipment.json") as file:
             data = json.load(file)
         equipment_schema = marshmallow_dataclass.class_schema(Equipment)
         return equipment_schema().load(data)
