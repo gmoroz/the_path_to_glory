@@ -2,7 +2,7 @@ import json
 import marshmallow
 import marshmallow_dataclass
 from dataclasses import dataclass
-from logic.skills import ConcreteSkill
+from project.logic.skills import ConcreteSkill
 
 
 @dataclass

@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from logic.unit import BaseUnit
+    from project.logic.unit import BaseUnit
 
 
 @dataclass

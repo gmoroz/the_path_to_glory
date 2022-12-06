@@ -1,4 +1,4 @@
-from logic.unit import BaseUnit
+from project.logic.unit import BaseUnit
 
 
 class BaseSingleton(type):
