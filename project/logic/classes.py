@@ -19,7 +19,7 @@ class UnitClass:
         unknown = marshmallow.EXCLUDE
 
 
-def get_unit_classes() -> dict[UnitClass]:
+def get_unit_classes() -> dict[str, UnitClass]:
     with open("data/units.json") as file:
         unit_classes = {}
         data = json.load(file)
