@@ -10,7 +10,7 @@ def create_app(config_object):
     app = Flask(__name__, template_folder="project/templates")
     app.config.from_object(config_object)
 
-    @app.route("/")
+    @app.get("/")
     def index():
         return render_template("index.html")
 
