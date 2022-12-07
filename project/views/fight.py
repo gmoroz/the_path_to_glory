@@ -22,3 +22,18 @@ class Hit(Resource):
         return make_response(
             render_template("fight.html", heroes=heroes, result=result), 200, HEADERS
         )
+
+
+@fight_ns.route("/use-skill/")
+class UseSkill(Resource):
+    def get(self):
+        result = ""
+        if arena.game_is_running:
+            result = arena.player.use_skill(arena.enemy)
+        return make_response(
+            render_template("fight.html", heroes=heroes, result=result)
+        )
+@fight_ns.route("/pass-turn/")
+class PassTurn(Resource):
+    def get(self):
+        result = arena.next_turn()

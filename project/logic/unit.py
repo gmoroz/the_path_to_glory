@@ -1,7 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from random import choice
+from random import randint
 from project.logic.classes import UnitClass
 from project.logic.equipment import Armor, Weapon
 
@@ -42,7 +42,7 @@ class BaseUnit(ABC):
         return damage
 
     def get_damage(self, damage: float) -> None:
-        self.hp -= damage
+        self.hp = round(self.hp - damage, 1)
 
     @abstractmethod
     def hit(self, target: BaseUnit) -> str:
@@ -57,26 +57,34 @@ class BaseUnit(ABC):
 @dataclass
 class PlayerUnit(BaseUnit):
     def hit(self, target: BaseUnit) -> str:
-        if self.unit_class.stamina >= self.weapon.stamina_per_hit:
-            self.stamina -= self.weapon.stamina_per_hit
+
+        if self.stamina >= self.weapon.stamina_per_hit:
+            self.stamina = round(self.stamina - self.weapon.stamina_per_hit, 1)
             damage = self._count_damage(target)
+
             if damage > 0:
                 target.get_damage(damage)
                 return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} соперника и наносит {damage} урона."
+
             return f"{self.name} используя {self.weapon.name} наносит удар, но {target.armor.name} cоперника его останавливает."
         return f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
 
 
 class EnemyUnit(BaseUnit):
     def hit(self, target: BaseUnit) -> str:
-        if not self._is_skill_used and choice(range(5)) == 4:
+
+        if not self._is_skill_used and randint(0, 100) < 36:
             self._is_skill_used = True
             return self.use_skill(target)
-        if self.unit_class.stamina >= self.weapon.stamina_per_hit:
-            self.stamina -= self.weapon.stamina_per_hit
+
+        if self.stamina >= self.weapon.stamina_per_hit:
+            self.stamina = round(self.stamina - self.weapon.stamina_per_hit, 1)
             damage = self._count_damage(target)
+
             if damage > 0:
                 target.get_damage(damage)
                 return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} и наносит Вам {damage} урона."
+
             return f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name} его останавливает."
+
         return f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
