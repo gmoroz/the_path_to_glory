@@ -28,7 +28,7 @@
     ></script>
     <main style="width: 320px; margin: 0 auto">
       <div class="container">
-        <h2>{{ result.header }}</h2>
+        <h2>Выберите {{ result.header }}</h2>
         <form action="" , method="post">
           <div class="form-group">
             <input
@@ -37,6 +37,7 @@
               name="name"
               class="form-control"
               placeholder="Имя героя"
+              required
             />
             <hr />
             <select class="custom-select" name="unit_class" required>
@@ -61,7 +62,9 @@
             </select>
             <hr />
           </div>
-          <button class="btn btn-success" type="submit">Выбрать героя</button>
+          <button class="btn btn-success" type="submit">
+            Выбрать {{ result.header }}
+          </button>
         </form>
       </div>
     </main>
