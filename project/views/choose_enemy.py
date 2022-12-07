@@ -12,7 +12,7 @@ class ChooseHeroView(Resource):
     def get(self):
         unit_params = get_unit_params()
         unit_params["header"] = "Выберите врага"
-        return render_template(unit_params)
+        return render_template("hero_choosing.html", result=unit_params)
 
     def post(self):
         enemy_data = request.form.to_dict()

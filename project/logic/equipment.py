@@ -49,16 +49,16 @@ class Equipment:
         return [item.name for item in items]
 
     def get_weapon(self, weapon_name: str) -> Weapon | None:
-        return self._get_item(weapon_name, self.equipment.list_of_weapons)
+        return self._get_item(weapon_name, self.equipment.weapons)
 
     def get_armor(self, armor_name: str) -> Armor | None:
-        return self._get_item(armor_name, self.equipment.list_of_armors)
+        return self._get_item(armor_name, self.equipment.armors)
 
     def get_weapons_names(self) -> list[str]:
-        return self._get_names(self.equipment.list_of_weapons)
+        return self._get_names(self.equipment.weapons)
 
     def get_armors_names(self) -> list[str]:
-        return self._get_names(self.equipment.list_of_armors)
+        return self._get_names(self.equipment.armors)
 
     @staticmethod
     def _get_equipment_data() -> EquipmentData:
