@@ -37,21 +37,26 @@ class Arena(metaclass=BaseSingleton):
     def _check_stamina(self, unit: BaseUnit) -> bool:
         return (
             unit.unit_class.max_stamina
-            >= unit.unit_class.stamina * self.STAMINA_PER_ROUND + unit.stamina
+            >= unit.stamina + unit.unit_class.stamina * self.STAMINA_PER_ROUND
         )
 
     def _stamina_regeneration(self) -> None:
         if self._check_stamina(self.player):
-            self.player.stamina += (
-                self.player.unit_class.stamina * self.STAMINA_PER_ROUND
+            self.player.stamina = round(
+                self.player.stamina
+                + self.player.unit_class.stamina * self.STAMINA_PER_ROUND,
+                1,
             )
         if self._check_stamina(self.enemy):
-            self.enemy.stamina += (
-                self.enemy.unit_class.stamina * self * self.STAMINA_PER_ROUND
+            self.enemy.stamina = round(
+                self.enemy.stamina
+                + self.enemy.unit_class.stamina * self.STAMINA_PER_ROUND,
+                1,
             )
 
     def next_turn(self) -> str:
         if self._check_players_hp():
+            self.game_is_running = False
             return self.battle_result
         self._stamina_regeneration()
         return self.enemy.hit(self.player)

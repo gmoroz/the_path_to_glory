@@ -3,7 +3,7 @@ from project.logic.unit import BaseUnit
 from project.logic.equipment import Equipment
 from project.logic.classes import get_unit_classes
 
-heroes = {"player": BaseUnit, "enemy": BaseUnit}
+heroes = {}
 arena = Arena()
 equipment = Equipment()
 unit_classes = get_unit_classes()

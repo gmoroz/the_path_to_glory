@@ -39,7 +39,7 @@ class BaseUnit(ABC):
         if target.stamina >= target.armor.stamina_per_turn:
             damage -= target.armor.defence * target.unit_class.armor
             target.stamina -= target.armor.stamina_per_turn
-        return damage
+        return round(damage, 1)
 
     def get_damage(self, damage: float) -> None:
         self.hp = round(self.hp - damage, 1)
@@ -74,7 +74,6 @@ class EnemyUnit(BaseUnit):
     def hit(self, target: BaseUnit) -> str:
 
         if not self._is_skill_used and randint(0, 100) < 36:
-            self._is_skill_used = True
             return self.use_skill(target)
 
         if self.stamina >= self.weapon.stamina_per_hit:
