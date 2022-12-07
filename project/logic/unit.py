@@ -1,19 +1,22 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 from random import choice
 from project.logic.classes import UnitClass
 from project.logic.equipment import Armor, Weapon
 
 
+@dataclass
 class BaseUnit(ABC):
-    def __init__(self, name: str, unit_class: UnitClass):
-        self.name = name
-        self.unit_class = unit_class
-        self.hp = unit_class.max_health
-        self.stamina = unit_class.max_stamina
+    name: str
+    unit_class: UnitClass
+    _is_skill_used: bool = False
+
+    def __post_init__(self):
+        self.hp = self.unit_class.max_health
+        self.stamina = self.unit_class.max_stamina
         self.weapon = ...
         self.armor = ...
-        self._is_skill_used = False
 
     @property
     def health_points(self) -> str:
@@ -51,12 +54,14 @@ class BaseUnit(ABC):
         return self.unit_class.skill.use(user=self, target=target)
 
 
+@dataclass
 class PlayerUnit(BaseUnit):
     def hit(self, target: BaseUnit) -> str:
         if self.unit_class.stamina >= self.weapon.stamina_per_hit:
             self.stamina -= self.weapon.stamina_per_hit
             damage = self._count_damage(target)
             if damage > 0:
+                target.get_damage(damage)
                 return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} соперника и наносит {damage} урона."
             return f"{self.name} используя {self.weapon.name} наносит удар, но {target.armor.name} cоперника его останавливает."
         return f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
@@ -71,6 +76,7 @@ class EnemyUnit(BaseUnit):
             self.stamina -= self.weapon.stamina_per_hit
             damage = self._count_damage(target)
             if damage > 0:
+                target.get_damage(damage)
                 return f"{self.name} используя {self.weapon.name} пробивает {target.armor.name} и наносит Вам {damage} урона."
             return f"{self.name} используя {self.weapon.name} наносит удар, но Ваш(а) {target.armor.name} его останавливает."
         return f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
