@@ -1,6 +1,6 @@
 class BaseConfig:
     DEBUG = True
-    SECRET_KEY = "249y823r9v8238r9u"
+    SECRET_KEY = "5n6oi67nhhuymazks4mzeh6mb3fklf1"
     TESTING = False
 
     JSON_AS_ASCII = False
@@ -10,4 +10,4 @@ class BaseConfig:
 
 
 class Config(BaseConfig):
-    pass
+    STRICT_SLASHES = False

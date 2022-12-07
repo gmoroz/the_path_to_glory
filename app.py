@@ -8,6 +8,11 @@ from project.config import Config
 def create_app(config_object):
     app = Flask(__name__, template_folder="project/templates")
     app.config.from_object(config_object)
+
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
     register_extensions(app)
     return app
 
@@ -21,10 +26,5 @@ def register_extensions(app):
 app = create_app(Config())
 
 
-@app.route("/")
-def menu_page():
-    return render_template("index.html")
-
-
 if __name__ == "__main__":
-    app.run()
+    app.run(host="localhost", port=5000, debug=True)

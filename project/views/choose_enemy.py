@@ -7,6 +7,7 @@ from project.logic.data_for_front import create_unit, get_unit_params
 choose_enemy_ns = Namespace("choose-enemy")
 
 
+@choose_enemy_ns.route("/")
 class ChooseHeroView(Resource):
     def get(self):
         unit_params = get_unit_params()
