@@ -1,7 +1,7 @@
 from flask_restx import Namespace, Resource
 from flask import request, render_template, redirect
 from project.container import heroes
-from logic.unit import PlayerUnit
+from project.logic.unit import PlayerUnit
 from project.logic.data_for_front import create_unit, get_unit_params
 
 choose_hero_ns = Namespace("choose-hero")

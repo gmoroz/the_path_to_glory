@@ -27,8 +27,8 @@ class Armor:
 
 @dataclass
 class EquipmentData:
-    weapons: field(default_factory=list)
-    armors: field(default_factory=list)
+    weapons: list[Weapon]
+    armors: list[Armor]
 
     class Meta:
         unknown = marshmallow.EXCLUDE
@@ -38,31 +38,31 @@ class Equipment:
     def __init__(self) -> None:
         self.equipment = self._get_equipment_data()
 
-    def __get_item(
+    def _get_item(
         self, item_name: str, items: list[Armor | Weapon]
     ) -> Weapon | Armor | None:
         for item in items:
             if item_name == item.name:
                 return item
 
-    def __get_names(self, items: list[Weapon | Armor]) -> list[str]:
+    def _get_names(self, items: list[Weapon | Armor]) -> list[str]:
         return [item.name for item in items]
 
     def get_weapon(self, weapon_name: str) -> Weapon | None:
-        return self.__get_item(weapon_name, self.equipment.list_of_weapons)
+        return self._get_item(weapon_name, self.equipment.list_of_weapons)
 
     def get_armor(self, armor_name: str) -> Armor | None:
-        return self.__get_item(armor_name, self.equipment.list_of_armors)
+        return self._get_item(armor_name, self.equipment.list_of_armors)
 
     def get_weapons_names(self) -> list[str]:
-        return self.__get_names(self.equipment.list_of_weapons)
+        return self._get_names(self.equipment.list_of_weapons)
 
     def get_armors_names(self) -> list[str]:
-        return self.__get_names(self.equipment.list_of_armors)
+        return self._get_names(self.equipment.list_of_armors)
 
     @staticmethod
     def _get_equipment_data() -> EquipmentData:
         with open("project/data/equipment.json") as file:
             data = json.load(file)
-        equipment_schema = marshmallow_dataclass.class_schema(Equipment)
+        equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
         return equipment_schema().load(data)

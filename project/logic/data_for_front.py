@@ -1,5 +1,5 @@
-from typing import TYPE_CHECKING
 from __future__ import annotations
+from typing import TYPE_CHECKING
 from project.container import equipment, unit_classes
 
 if TYPE_CHECKING:
