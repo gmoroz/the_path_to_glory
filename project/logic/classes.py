@@ -20,7 +20,7 @@ class UnitClass:
 
 
 def get_unit_classes() -> dict[str, UnitClass]:
-    with open("project/data/units.json") as file:
+    with open("project/data/units.json", encoding="utf-8") as file:
         unit_classes = {}
         data = json.load(file)
         unit_schema = marshmallow_dataclass.class_schema(UnitClass)

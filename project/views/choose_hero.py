@@ -13,7 +13,6 @@ class ChooseHeroView(Resource):
     def get(self):
         unit_params = get_unit_params()
         unit_params["header"] = "героя"
-        headers = {"Content-Type": "text/html"}
         return make_response(
             render_template("hero_choosing.html", result=unit_params), 200, HEADERS
         )
