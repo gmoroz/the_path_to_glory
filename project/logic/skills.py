@@ -32,6 +32,6 @@ class Skill(ABC):
 @dataclass
 class ConcreteSkill(Skill):
     def skill_effect(self) -> str:
-        self.user.stamina -= self.stamina
+        self.user.stamina = round(self.user.stamina - self.stamina, 1)
         self.target.get_damage(self.damage)
         return f"{self.user.name} использует {self.name} и наносит {self.damage} урона сопернику."
