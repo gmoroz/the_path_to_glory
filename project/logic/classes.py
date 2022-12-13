@@ -2,7 +2,7 @@ import json
 import marshmallow
 import marshmallow_dataclass
 from dataclasses import dataclass
-from project.logic.skills import ConcreteSkill
+from project.logic.skills import Skill
 
 
 @dataclass
@@ -13,7 +13,7 @@ class UnitClass:
     attack: float
     stamina: float
     armor: float
-    skill: ConcreteSkill
+    skill: Skill
 
     class Meta:
         unknown = marshmallow.EXCLUDE

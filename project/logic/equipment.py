@@ -1,7 +1,7 @@
 import marshmallow
 import marshmallow_dataclass
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from random import uniform
 
 

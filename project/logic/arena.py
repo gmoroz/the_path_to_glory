@@ -66,12 +66,12 @@ class Arena(metaclass=BaseSingleton):
         self.game_is_running = False
         return self.battle_result
 
-    def player_hit(self):
+    def player_hit(self) -> str:
         res = self.player.hit(self.enemy)
         self.next_turn()
         return res
 
-    def player_use_skill(self):
+    def player_use_skill(self) -> str:
         res = self.player.use_skill(self.enemy)
         self.next_turn()
         return res
