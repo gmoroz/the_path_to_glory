@@ -9,7 +9,7 @@ from project.constants import HEADERS
 auth_ns = Namespace("auth")
 
 
-@auth_ns.route("/register")
+@auth_ns.route("/register/")
 class RegisterView(Resource):
     def get(self):
         return make_response(render_template("sign_up.html"), 200, HEADERS)
@@ -17,10 +17,10 @@ class RegisterView(Resource):
     def post(self):
         if req_data := request.form.to_dict():
             user_service.create(req_data)
-            return redirect("/auth/login")
+            return redirect("/auth/login/")
 
 
-@auth_ns.route("/login")
+@auth_ns.route("/login/")
 class LoginView(Resource):
     def get(self):
         return make_response(render_template("sign_in.html"), 200, HEADERS)
@@ -32,7 +32,7 @@ class LoginView(Resource):
         if user_d is not None:
             if not check_password_hash(user_d.password, req_data.get("password")):
                 return Response(
-                    response="Неправильный пароль. <a href='/auth/login'>Попробовать еще раз</a>",
+                    response="Неправильный пароль. <a href='/auth/login/'>Попробовать еще раз</a>",
                     status=400,
                 )
             user_string = user_schema.dumps(user_d)
@@ -43,6 +43,6 @@ class LoginView(Resource):
             return redirect("/user/profile")
 
         return Response(
-            response="Неправильный логин. <a href='/auth/login'>Попробовать еще раз</a>",
+            response="Неправильный логин. <a href='/auth/login/'>Попробовать еще раз</a>",
             status=400,
         )

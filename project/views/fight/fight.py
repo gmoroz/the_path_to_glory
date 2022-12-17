@@ -3,10 +3,12 @@ from flask import render_template, make_response, redirect
 from project.constants import HEADERS
 from project.container import arena, heroes
 from project.functions import check_heroes
+from project.helpers import auth_required
 
 fight_ns = Namespace("fight")
 
 
+@auth_required
 @fight_ns.route("/")
 class FightView(Resource):
     def get(self):
@@ -16,6 +18,7 @@ class FightView(Resource):
         return make_response(render_template("fight.html", heroes=heroes), 200, HEADERS)
 
 
+@auth_required
 @fight_ns.route("/hit/")
 class Hit(Resource):
     def get(self):
@@ -30,6 +33,7 @@ class Hit(Resource):
         )
 
 
+@auth_required
 @fight_ns.route("/use-skill/")
 class UseSkill(Resource):
     def get(self):
@@ -44,6 +48,7 @@ class UseSkill(Resource):
         )
 
 
+@auth_required
 @fight_ns.route("/pass-turn/")
 class PassTurn(Resource):
     def get(self):
@@ -57,6 +62,7 @@ class PassTurn(Resource):
         )
 
 
+@auth_required
 @fight_ns.route("/end-fight/")
 class EndFight(Resource):
     def get(self):
