@@ -11,10 +11,17 @@ def create_unit(unit_data: dict[str], UnitClass: BaseUnit) -> BaseUnit:
     type_of_unit = unit_data.get("unit_class")
     weapon = equipment.get_weapon(unit_data.get("weapon"))
     armor = equipment.get_armor(unit_data.get("armor"))
-
-    unit: BaseUnit = UnitClass(name=name, unit_class=unit_classes.get(type_of_unit))
-    unit.equip_armor(armor)
-    unit.equip_weapon(weapon)
+    unit_class = unit_classes.get(type_of_unit)
+    hp = unit_class.max_health
+    stamina = unit_class.max_stamina
+    unit: BaseUnit = UnitClass(
+        name=name,
+        unit_class=unit_class,
+        armor=armor,
+        weapon=weapon,
+        hp=hp,
+        stamina=stamina,
+    )
 
     return unit
 

@@ -1,3 +1,4 @@
+import calendar
 import datetime
 import jwt
 from project.constants import (
@@ -6,7 +7,7 @@ from project.constants import (
     TOKEN_EXPIRE_DAYS,
     TOKEN_EXPIRE_MINUTES,
 )
-import calendar
+
 from flask import abort, session
 
 

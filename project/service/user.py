@@ -40,4 +40,4 @@ class UserService:
         self.dao.delete(username)
 
     def update(self, user_d):
-        self.dao.update(user_d)
+        self.dao.update(self.get_user(user_d.get("username")))

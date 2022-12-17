@@ -35,13 +35,10 @@ class LoginView(Resource):
                     response="Неправильный пароль. <a href='/auth/login/'>Попробовать еще раз</a>",
                     status=400,
                 )
-            user_string = user_schema.dumps(user_d)
-            user_dict = json.loads(user_string)
-
-            tokens = generate_tokens(user_dict)
+            tokens = generate_tokens(req_data)
             session["token"] = tokens.get("access_token")
-            session["user_d"] = user_d
-            return redirect("/user/profile")
+            session["username"] = user_d.username
+            return redirect("/game")
 
         return Response(
             response="Неправильный логин. <a href='/auth/login/'>Попробовать еще раз</a>",

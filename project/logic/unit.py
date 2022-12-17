@@ -8,15 +8,13 @@ from project.logic.equipment import Armor, Weapon
 
 @dataclass
 class BaseUnit(ABC):
+    hp: float
+    stamina: float
     name: str
     unit_class: UnitClass
+    weapon: Weapon
+    armor: Armor
     _is_skill_used: bool = False
-
-    def __post_init__(self):
-        self.hp = self.unit_class.max_health
-        self.stamina = self.unit_class.max_stamina
-        self.weapon = ...
-        self.armor = ...
 
     @property
     def health_points(self) -> str:
