@@ -1,7 +1,12 @@
+from __future__ import annotations
 from operator import itemgetter
-from project.dao.models.user import User
+from flask import session
+from typing import TYPE_CHECKING
 from project.dao.user import UserDao
 from project.helpers import check_password, encode_token, get_hashed_password
+
+if TYPE_CHECKING:
+    from project.dao.models.user import User
 
 
 class UserService:
