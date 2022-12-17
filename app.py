@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from flask_restx import Api
-from project.views.choose_hero import choose_hero_ns
-from project.views.choose_enemy import choose_enemy_ns
-from project.views.fight import fight_ns
+from project.views.fight.choose_hero import choose_hero_ns
+from project.views.fight.choose_enemy import choose_enemy_ns
+from project.views.fight.fight import fight_ns
 from project.config import Config
 from project.setup_db import db
 
