@@ -1,3 +1,9 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 class BaseConfig:
     DEBUG = True
     SECRET_KEY = "5n6oi67nhhuymazks4mzeh6mb3fklf1"
@@ -11,3 +17,4 @@ class BaseConfig:
 
 class Config(BaseConfig):
     STRICT_SLASHES = False
+    SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URI"]
