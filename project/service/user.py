@@ -1,12 +1,9 @@
-from __future__ import annotations
 from operator import itemgetter
 from flask import session
-from typing import TYPE_CHECKING
+from project.dao.models.user import User
+from flask_bcrypt import generate_password_hash, check_password_hash
 from project.dao.user import UserDao
-from project.helpers import check_password, encode_token, get_hashed_password
-
-if TYPE_CHECKING:
-    from project.dao.models.user import User
+from project.helpers import encode_token
 
 
 class UserService:
@@ -20,7 +17,9 @@ class UserService:
         return self.dao.get_user(username)
 
     def create(self, user_d: dict) -> None:
-        user_d["password"] = get_hashed_password(user_d.get("password"))
+        user_d["password"] = generate_password_hash(user_d.get("password")).decode(
+            "utf-8"
+        )
         self.dao.create(user_d)
 
     def update_password(self, passwords: dict) -> bool:
@@ -31,8 +30,8 @@ class UserService:
             return False
         if user_d := encode_token(session.get("token")):
             user = self.get_user(user_d.get("username"))
-            if check_password(old_password, user.password):
-                user.password = get_hashed_password(new_password)
+            if check_password_hash(user.password, old_password):
+                user.password = generate_password_hash(new_password)
                 self.dao.update(user)
                 return True
         return False

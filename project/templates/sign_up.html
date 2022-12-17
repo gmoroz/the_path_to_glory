@@ -8,7 +8,7 @@
       addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
     </script>
     <link
-      href="static/sign_up.css"
+      href="/static/sign_up.css"
       rel="stylesheet"
       type="text/css"
       media="all"
@@ -24,11 +24,11 @@
       <h1>Регистрация</h1>
       <div class="main-agileinfo">
         <div class="agileits-top">
-          <form action="#" method="post">
+          <form action="" method="post">
             <input
               class="text"
               type="text"
-              name="Username"
+              name="username"
               placeholder="Username"
               required=""
             />
@@ -60,9 +60,6 @@
               placeholder="Пароль"
               required=""
             />
-            <div class="wthree-text">
-              <div class="clear"></div>
-            </div>
             <input type="submit" value="Зарегистрироваться" />
           </form>
           <p>У вас уже есть аккаунт? <a href="/auth/login">Войти</a></p>

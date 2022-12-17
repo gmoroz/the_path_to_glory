@@ -4,8 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 HEADERS = {"Content-Type": "text/html"}
-SALT = os.environ["SALT"]
-TOKEN_EXPIRE_MINUTES = os.environ["TOKEN_EXPIRE_MINUTES"]
-TOKEN_EXPIRE_DAYS = os.environ["TOKEN_EXPIRE_DAYS"]
+TOKEN_EXPIRE_MINUTES = 30
+TOKEN_EXPIRE_DAYS = 15
 JWT_ALGORITHM = os.environ["JWT_ALGORITHM"]
 JWT_SECRET = os.environ["JWT_SECRET"]

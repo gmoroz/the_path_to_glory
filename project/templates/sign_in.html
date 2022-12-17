@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=\, initial-scale=1.0" />
     <title>Вход</title>
     <link
-      href="static/sign_in.css"
+      href="/static/sign_in.css"
       rel="stylesheet"
       type="text/css"
       media="all"
@@ -15,9 +15,9 @@
   <body>
     <div class="login-page">
       <div class="form">
-        <form class="login-form">
-          <input type="text" placeholder="username" />
-          <input type="password" placeholder="password" />
+        <form class="login-form" action="" method="post">
+          <input type="text" placeholder="username" name="username" />
+          <input type="password" placeholder="password" name="password" />
           <button>войти</button>
           <p class="message">
             Не зарегистрированы? <a href="/auth/register">Создать аккаунт</a>
