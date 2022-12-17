@@ -19,8 +19,8 @@ class ChooseEnemyView(Resource):
 
     def post(self):
         enemy_data = request.form.to_dict()
-        arena = Arena(session["heroes"]["player"], create_unit(enemy_data, EnemyUnit))
+        arena = Arena(session["player"], create_unit(enemy_data, EnemyUnit))
         arena.start_game()
+        session.pop("player")
         session["arena"] = arena
-        session.pop("heroes")
         return redirect("/fight/")

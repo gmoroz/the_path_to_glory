@@ -74,7 +74,5 @@ class PassTurn(Resource):
 @fight_ns.route("/end-fight/")
 class EndFight(Resource):
     def get(self):
-        arena = get_arena(session["arena"])
-        
         session.pop("arena", None)
         return redirect("/game")

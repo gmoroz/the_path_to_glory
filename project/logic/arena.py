@@ -75,6 +75,7 @@ class Arena(metaclass=BaseSingleton):
             user.wins_count += 1
         else:
             user.loses_count += 1
+        user_service.update({"username": user.username})
         return self.battle_result
 
     def player_hit(self) -> str:

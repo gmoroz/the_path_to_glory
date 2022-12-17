@@ -9,8 +9,8 @@ def get_unit(unit_data, Unit: BaseUnit) -> BaseUnit:
     weapon = equipment.get_weapon(unit_data.get("weapon").get("name"))
     armor = equipment.get_armor(unit_data.get("armor").get("name"))
     unit_class = unit_classes.get(type_of_unit)
-    hp = unit_data.get("hp")
-    stamina = unit_data.get("stamina")
+    hp = round(unit_data.get("hp"), 1)
+    stamina = round(unit_data.get("stamina"), 1)
 
     return Unit(
         name=name,
