@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource
 from flask import request, render_template, redirect, make_response
-from project.constats import HEADERS
+from project.constants import HEADERS
 from project.container import heroes
 from project.logic.unit import PlayerUnit
 from project.logic.data_for_front import create_unit, get_unit_params

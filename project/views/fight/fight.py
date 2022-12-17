@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource
 from flask import render_template, make_response, redirect
-from project.constats import HEADERS
+from project.constants import HEADERS
 from project.container import arena, heroes
 from project.functions import check_heroes
 

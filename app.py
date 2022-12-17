@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect
 from flask_restx import Api
 from project.views.fight.choose_hero import choose_hero_ns
 from project.views.fight.choose_enemy import choose_enemy_ns
@@ -8,12 +8,14 @@ from project.setup_db import db
 
 
 def create_app(config_object):
-    app = Flask(__name__, template_folder="project/templates")
+    app = Flask(
+        __name__, template_folder="project/templates", static_folder="project/static"
+    )
     app.config.from_object(config_object)
 
     @app.get("/")
     def index():
-        return render_template("index.html")
+        return redirect("/auth/login")
 
     register_extensions(app)
     return app
