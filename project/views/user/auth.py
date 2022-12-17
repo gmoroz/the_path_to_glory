@@ -40,6 +40,7 @@ class LoginView(Resource):
 
             tokens = generate_tokens(user_dict)
             session["token"] = tokens.get("access_token")
+            session["user_d"] = user_d
             return redirect("/user/profile")
 
         return Response(

@@ -1,3 +1,4 @@
+from project.constants import DRAW, LOSE, WIN
 from project.logic.unit import BaseUnit
 
 
@@ -25,13 +26,13 @@ class Arena(metaclass=BaseSingleton):
 
     def _check_players_hp(self) -> bool | None:
         if self.player.hp <= 0:
-            self.battle_result = "Игрок проиграл битву"
+            self.battle_result = WIN
             return True
         if self.enemy.hp <= 0:
-            self.battle_result = "Игрок выиграл битву"
+            self.battle_result = LOSE
             return True
         if self.enemy.hp <= 0 and self.player.hp <= 0:
-            self.battle_result = "Ничья"
+            self.battle_result = DRAW
             return True
 
     def _check_stamina(self, unit: BaseUnit) -> bool:

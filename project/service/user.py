@@ -38,3 +38,6 @@ class UserService:
 
     def delete(self, username: str) -> None:
         self.dao.delete(username)
+
+    def update(self, user_d):
+        self.dao.update(user_d)

@@ -6,8 +6,6 @@ from project.dao.models.user import UserSchema
 from project.dao.user import UserDao
 from project.setup_db import db
 
-heroes = {}
-arena = Arena()
 equipment = Equipment()
 unit_classes = get_unit_classes()
 

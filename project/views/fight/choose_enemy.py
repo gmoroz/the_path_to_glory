@@ -1,7 +1,6 @@
 from flask_restx import Namespace, Resource
-from flask import request, render_template, make_response, redirect
+from flask import request, render_template, make_response, redirect, session
 from project.constants import HEADERS
-from project.container import heroes
 from project.logic.unit import EnemyUnit
 from project.logic.data_for_front import create_unit, get_unit_params
 
@@ -19,5 +18,5 @@ class ChooseHeroView(Resource):
 
     def post(self):
         enemy_data = request.form.to_dict()
-        heroes["enemy"] = create_unit(enemy_data, EnemyUnit)
+        session["heroes"]["enemy"] = create_unit(enemy_data, EnemyUnit)
         return redirect("/fight/")
