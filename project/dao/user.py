@@ -12,6 +12,8 @@ class UserDao:
             username=user_d.get("username"),
             email=user_d.get("email"),
             password=user_d.get("password"),
+            first_name=user_d.get("first_name"),
+            last_name=user_d.get("last_name"),
         )
         self.session.add(ent)
         self.session.commit()

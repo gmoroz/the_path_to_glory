@@ -4,6 +4,7 @@ from project.views.choose_hero import choose_hero_ns
 from project.views.choose_enemy import choose_enemy_ns
 from project.views.fight import fight_ns
 from project.config import Config
+from project.setup_db import db
 
 
 def create_app(config_object):
@@ -26,6 +27,10 @@ def register_extensions(app):
 
 
 app = create_app(Config())
+
+
+def init_db(app):
+    db.init_app(app)
 
 
 if __name__ == "__main__":
