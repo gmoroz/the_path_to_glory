@@ -1,8 +1,9 @@
 import json
 from flask_restx import Resource, Namespace
-from flask import render_template, request, redirect, Response, session
+from flask import render_template, request, redirect, Response, session, make_response
 from project.container import user_service, user_schema
 from project.helpers import check_password, generate_tokens
+from project.constants import HEADERS
 
 auth_ns = Namespace("auth")
 
@@ -10,7 +11,7 @@ auth_ns = Namespace("auth")
 @auth_ns.route("/register")
 class RegisterView(Resource):
     def get(self):
-        return render_template("sign_up.html")
+        return make_response(render_template("sign_up.html"), 200, HEADERS)
 
     def post(self):
         if req_data := request.form.to_dict():
@@ -21,7 +22,7 @@ class RegisterView(Resource):
 @auth_ns.route("/login")
 class LoginView(Resource):
     def get(self):
-        return render_template("sign_in.html")
+        return make_response(render_template("sign_in.html"), 200, HEADERS)
 
     def post(self):
         req_data = request.form.to_dict()
