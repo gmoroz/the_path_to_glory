@@ -9,7 +9,7 @@ leaderboards_ns = Namespace("leaderboards")
 @leaderboards_ns.route("")
 class LeaderboardsView(Resource):
     def get(self):
-        users = user_service.get_all()
+        users = sorted(user_service.get_all(), key=lambda user: -user.wins_count)
         return make_response(
             render_template("leaderboards.html", users=users), 200, HEADERS
         )

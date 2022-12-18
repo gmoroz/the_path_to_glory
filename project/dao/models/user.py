@@ -12,6 +12,7 @@ class User(db.Model):
     wins_count = db.Column(db.Integer(), default=0)
     loses_count = db.Column(db.Integer(), default=0)
 
+
 class UserSchema(Schema):
     id = fields.Int()
     username = fields.Str()
