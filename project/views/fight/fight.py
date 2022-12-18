@@ -83,10 +83,10 @@ class PassTurn(Resource):
 class EndFight(Resource):
     @auth_required
     def get(self):
-        if session.get("arena") is None:
-            return redirect("/game")
-        user_service.update_statistics(session["arena"]["battle_result"])
         token = session["token"]
         session.clear()
         session["token"] = token
+        if session.get("arena") is None:
+            return redirect("/game")
+        user_service.update_statistics(session["arena"]["battle_result"])
         return redirect("/game")
