@@ -2,8 +2,6 @@ version: '3.9'
 
 services:
   api:
-    build:
-      context: .
     image: rorymercury/the-path-to-glory:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
       - 80:80
