@@ -43,9 +43,12 @@ class UserService:
     def update(self, user_d):
         self.dao.update(self.get_user(user_d.get("username")))
 
-    def update_statistics(self, battle_result):
+    def get_user_by_token(self) -> User:
         user_d = encode_token(session["token"])
-        user = self.get_user(user_d.get("username"))
+        return self.get_user(user_d.get("username"))
+
+    def update_statistics(self, battle_result):
+        user = self.get_user_by_token()
         if battle_result == WIN:
             user.wins_count += 1
         else:

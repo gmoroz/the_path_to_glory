@@ -12,3 +12,5 @@ JWT_SECRET = os.environ["JWT_SECRET"]
 WIN = "Игрок выиграл битву"
 LOSE = "Игрок проиграл битву"
 DRAW = "Ничья"
+
+GLADIATOR_NAMES = ("Спартак", "Крикс", "Коммод", "Максимус")
