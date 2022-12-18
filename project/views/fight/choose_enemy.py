@@ -2,7 +2,7 @@ from flask_restx import Namespace, Resource
 from flask import request, render_template, make_response, redirect, session
 from project.constants import HEADERS
 from project.logic.arena import Arena
-from project.logic.unit import EnemyUnit
+from project.logic.unit import EnemyUnit, PlayerUnit
 from project.logic.data_for_front import create_unit, get_unit_params
 
 choose_enemy_ns = Namespace("choose-enemy")
@@ -19,8 +19,11 @@ class ChooseEnemyView(Resource):
 
     def post(self):
         enemy_data = request.form.to_dict()
-        arena = Arena(session["player"], create_unit(enemy_data, EnemyUnit))
+        arena = Arena(
+            create_unit(session["player"], PlayerUnit),
+            create_unit(enemy_data, EnemyUnit),
+        )
+        session.pop("player", None)
         arena.start_game()
         session["arena"] = arena
-        session.pop("player")
         return redirect("/fight/")

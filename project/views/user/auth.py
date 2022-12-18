@@ -37,7 +37,6 @@ class LoginView(Resource):
                 )
             tokens = generate_tokens(req_data)
             session["token"] = tokens.get("access_token")
-            session["username"] = user_d.username
             return redirect("/game")
 
         return Response(

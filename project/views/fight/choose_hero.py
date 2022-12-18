@@ -17,6 +17,5 @@ class ChooseHeroView(Resource):
         )
 
     def post(self):
-        player_data = request.form.to_dict()
-        session["player"] = create_unit(player_data, PlayerUnit)
+        session["player"]  = request.form.to_dict()
         return redirect("/choose-enemy/")

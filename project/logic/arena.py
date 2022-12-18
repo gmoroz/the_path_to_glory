@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from project.constants import DRAW, LOSE, WIN
+from project.helpers import encode_token
 from project.logic.unit import BaseUnit
 from project.container import user_service
 from flask import session
@@ -70,12 +71,6 @@ class Arena(metaclass=BaseSingleton):
     def _end_game(self) -> str:
         self._instances = {}
         self.game_is_running = False
-        user = user_service.get_user(session["username"])
-        if self.battle_result == WIN:
-            user.wins_count += 1
-        else:
-            user.loses_count += 1
-        user_service.update({"username": user.username})
         return self.battle_result
 
     def player_hit(self) -> str:

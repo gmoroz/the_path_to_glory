@@ -4,6 +4,7 @@ from project.dao.models.user import User
 from flask_bcrypt import generate_password_hash, check_password_hash
 from project.dao.user import UserDao
 from project.helpers import encode_token
+from project.constants import WIN
 
 
 class UserService:
@@ -41,3 +42,12 @@ class UserService:
 
     def update(self, user_d):
         self.dao.update(self.get_user(user_d.get("username")))
+
+    def update_statistics(self, battle_result):
+        user_d = encode_token(session["token"])
+        user = self.get_user(user_d.get("username"))
+        if battle_result == WIN:
+            user.wins_count += 1
+        else:
+            user.loses_count += 1
+        self.update({"username": user.username})
