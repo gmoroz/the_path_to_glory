@@ -5,6 +5,7 @@ from project.views.fight.choose_hero import choose_hero_ns
 from project.views.fight.choose_enemy import choose_enemy_ns
 from project.views.fight.fight import fight_ns
 from project.views.auth import auth_ns
+from project.views.leaderboards import leaderboards_ns
 from project.config import Config
 from project.setup_db import db
 from project.constants import HEADERS
@@ -35,6 +36,7 @@ def register_extensions(app):
     api.add_namespace(choose_enemy_ns)
     api.add_namespace(fight_ns)
     api.add_namespace(auth_ns)
+    api.add_namespace(leaderboards_ns)
 
 
 app = create_app(Config())
