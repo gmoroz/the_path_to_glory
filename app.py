@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, make_response
+from flask import Flask, redirect, render_template, make_response, jsonify, session
 from flask_restx import Api
 from project.helpers import auth_required
 from project.views.fight.choose_hero import choose_hero_ns
@@ -25,6 +25,10 @@ def create_app(config_object):
     @auth_required
     def start_game():
         return make_response(render_template("start_game.html"), 200, HEADERS)
+
+    @app.get("/session")
+    def get_session():
+        return jsonify(session)
 
     register_extensions(app)
     return app
