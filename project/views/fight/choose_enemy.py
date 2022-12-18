@@ -22,11 +22,10 @@ class ChooseEnemyView(Resource):
     @auth_required
     def post(self):
         enemy_data = request.form.to_dict()
-        arena = Arena(
+        session["arena"] = Arena(
             create_unit(session["player"], PlayerUnit),
             create_unit(enemy_data, EnemyUnit),
         )
         session.pop("player", None)
-        arena.start_game()
-        session["arena"] = arena
+        session["arena"].start_game()
         return redirect("/fight/")
