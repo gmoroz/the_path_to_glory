@@ -19,3 +19,4 @@ class Config(BaseConfig):
     STRICT_SLASHES = False
     SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URI"]
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SESSION_TYPE = "filesystem"

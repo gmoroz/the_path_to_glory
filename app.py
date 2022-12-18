@@ -1,5 +1,7 @@
 from flask import Flask, redirect, render_template, make_response, jsonify, session
 from flask_restx import Api
+from flask_session import Session
+from flask_cors import CORS
 from project.helpers import auth_required
 from project.views.fight.choose_hero import choose_hero_ns
 from project.views.fight.choose_enemy import choose_enemy_ns
@@ -44,11 +46,14 @@ def register_extensions(app):
 
 
 app = create_app(Config())
+Session(app)
+CORS(app)
 
 
 db.init_app(app)
 with app.app_context():
     db.create_all()
+
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)
