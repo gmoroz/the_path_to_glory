@@ -47,8 +47,3 @@ def auth_required(func):
         return func(*args, *kwargs)
 
     return wrapper
-
-
-def check_status():
-    if session.get("arena") is None:
-        return redirect("/game")
