@@ -4,7 +4,7 @@ from project.helpers import auth_required
 from project.views.fight.choose_hero import choose_hero_ns
 from project.views.fight.choose_enemy import choose_enemy_ns
 from project.views.fight.fight import fight_ns
-from project.views.user.auth import auth_ns
+from project.views.auth import auth_ns
 from project.config import Config
 from project.setup_db import db
 from project.constants import HEADERS

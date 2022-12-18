@@ -2,7 +2,7 @@ import json
 from flask_restx import Resource, Namespace
 from flask import render_template, request, redirect, Response, session, make_response
 from flask_bcrypt import check_password_hash
-from project.container import user_service, user_schema
+from project.container import user_service
 from project.helpers import generate_tokens
 from project.constants import HEADERS
 
