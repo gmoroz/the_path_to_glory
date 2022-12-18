@@ -30,7 +30,7 @@ def create_app(config_object):
 
     @app.get("/session")
     def get_session():
-        return jsonify(session.values())
+        return jsonify(session)
 
     register_extensions(app)
     return app
