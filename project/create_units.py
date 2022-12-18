@@ -1,16 +1,10 @@
-from project.container import equipment, unit_classes, user_service
-from project.constants import GLADIATOR_NAMES
+from project.container import equipment, unit_classes
 from project.logic.arena import Arena
 from project.logic.unit import BaseUnit, EnemyUnit, PlayerUnit
-from random import choice
 
 
-def get_unit(unit_data, Unit: BaseUnit, is_enemy=False) -> BaseUnit:
-    name = (
-        choice(GLADIATOR_NAMES)
-        if is_enemy
-        else user_service.get_user_by_token().username
-    )
+def get_unit(unit_data, Unit: BaseUnit) -> BaseUnit:
+    name = unit_data.get("name")
     type_of_unit = unit_data.get("unit_class").get("name")
     weapon = equipment.get_weapon(unit_data.get("weapon").get("name"))
     armor = equipment.get_armor(unit_data.get("armor").get("name"))

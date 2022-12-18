@@ -45,30 +45,75 @@
       id="sec-d151"
     >
       <a
-        href="https://nicepage.studio"
+        href="/"
         class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-1 u-radius-23 u-btn-1"
         >Выйти</a
       >
       <h1 class="u-text u-text-body-alt-color u-text-default u-text-1">
         Список лидеров
       </h1>
-      <table>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-      </table>
+      <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div
+              class="u-container-style u-layout-cell u-size-20 u-layout-cell-1"
+            >
+              <div class="u-container-layout u-valign-top u-container-layout-1">
+                <h2
+                  class="u-text u-text-body-alt-color u-text-default u-text-2"
+                >
+                  Имя
+                </h2>
+                {% for user in users %}
+                <h3
+                  class="u-text u-text-body-alt-color u-text-default u-text-3"
+                >
+                  {{ user.username }}
+                </h3>
+                {% endfor %}
+              </div>
+            </div>
+            <div
+              class="u-container-style u-layout-cell u-size-20 u-layout-cell-2"
+            >
+              <div class="u-container-layout u-valign-top u-container-layout-2">
+                <h2
+                  class="u-text u-text-body-alt-color u-text-default u-text-4"
+                >
+                  Победы
+                </h2>
+                {% for user in users %}
+                <h3
+                  class="u-text u-text-body-alt-color u-text-default u-text-5"
+                >
+                  {{ user.wins_count }}
+                </h3>
+                {% endfor %}
+              </div>
+            </div>
+            <div
+              class="u-container-style u-layout-cell u-size-20 u-layout-cell-3"
+            >
+              <div
+                class="u-container-layout u-valign-middle u-container-layout-3"
+              >
+                <h2
+                  class="u-text u-text-body-alt-color u-text-default u-text-6"
+                >
+                  Поражения
+                </h2>
+                {% for user in users %}
+                <h3
+                  class="u-text u-text-body-alt-color u-text-default u-text-7"
+                >
+                  {{ user.loses_count }}
+                </h3>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </body>
 </html>

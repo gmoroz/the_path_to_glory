@@ -1,6 +1,8 @@
 from __future__ import annotations
+from random import choice
 from typing import TYPE_CHECKING
-from project.container import equipment, unit_classes
+from project.container import equipment, unit_classes, user_service
+from project.constants import GLADIATOR_NAMES
 
 if TYPE_CHECKING:
     from project.logic.unit import BaseUnit
@@ -26,9 +28,14 @@ def create_unit(unit_data: dict[str], UnitClass: BaseUnit) -> BaseUnit:
     return unit
 
 
-def get_unit_params() -> dict[str, list[str]]:
+def get_unit_params(is_enemy=False) -> dict[str, list[str]]:
     return {
         "classes": unit_classes.keys(),
         "weapons": equipment.get_weapons_names(),
         "armors": equipment.get_armors_names(),
+        "name": (
+            choice(GLADIATOR_NAMES)
+            if is_enemy
+            else user_service.get_user_by_token().username
+        ),
     }
