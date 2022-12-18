@@ -2,7 +2,7 @@ from flask_restx import Namespace, Resource
 from flask import render_template, make_response, session, redirect
 from project.constants import HEADERS
 from project.container import user_service
-from project.helpers import auth_required
+from project.helpers import auth_required, check_status
 from project.create_units import get_arena
 
 
@@ -13,6 +13,8 @@ fight_ns = Namespace("fight")
 class FightView(Resource):
     @auth_required
     def get(self):
+        if session.get("arena") is None:
+            return redirect("/game")
         arena = get_arena(session["arena"])
         return make_response(
             render_template("fight.html", heroes=arena),
@@ -25,6 +27,8 @@ class FightView(Resource):
 class Hit(Resource):
     @auth_required
     def get(self):
+        if session.get("arena") is None:
+            return redirect("/game")
         arena = get_arena(session["arena"])
         result = arena.battle_result
         if arena.game_is_running:
@@ -42,6 +46,8 @@ class Hit(Resource):
 class UseSkill(Resource):
     @auth_required
     def get(self):
+        if session.get("arena") is None:
+            return redirect("/game")
         arena = get_arena(session["arena"])
         result = arena.battle_result
         if arena.game_is_running:
@@ -59,6 +65,8 @@ class UseSkill(Resource):
 class PassTurn(Resource):
     @auth_required
     def get(self):
+        if session.get("arena") is None:
+            return redirect("/game")
         arena = get_arena(session["arena"])
         result = arena.battle_result
         if arena.game_is_running:
@@ -75,6 +83,8 @@ class PassTurn(Resource):
 class EndFight(Resource):
     @auth_required
     def get(self):
+        if session.get("arena") is None:
+            return redirect("/game")
         user_service.update_statistics(session["arena"]["battle_result"])
         token = session["token"]
         session.clear()

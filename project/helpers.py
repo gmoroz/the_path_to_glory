@@ -8,7 +8,7 @@ from project.constants import (
     TOKEN_EXPIRE_MINUTES,
 )
 
-from flask import abort, session
+from flask import abort, session, redirect
 
 
 def generate_tokens(data: dict) -> dict:
@@ -47,3 +47,8 @@ def auth_required(func):
         return func(*args, *kwargs)
 
     return wrapper
+
+
+def check_status():
+    if session.get("arena") is None:
+        return redirect("/game")
