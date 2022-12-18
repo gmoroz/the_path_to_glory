@@ -41,4 +41,3 @@ jobs:
             cd flask_app_ci
             echo ${{ secrets.PASSWORD }} | sudo docker-compose rm -fsv
             echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
-
