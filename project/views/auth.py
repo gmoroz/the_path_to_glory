@@ -1,4 +1,3 @@
-import json
 from flask_restx import Resource, Namespace
 from flask import render_template, request, redirect, Response, session, make_response
 from flask_bcrypt import check_password_hash
