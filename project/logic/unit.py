@@ -18,11 +18,13 @@ class BaseUnit(ABC):
 
     @property
     def health_points(self) -> str:
-        return f"Очки здоровья: {self.hp}/{self.unit_class.max_health}"
+        return f"Очки здоровья: {round(self.hp, 1)}/{self.unit_class.max_health}"
 
     @property
     def stamina_points(self) -> str:
-        return f"Очки выносливости: {self.stamina}/{self.unit_class.max_stamina}"
+        return (
+            f"Очки выносливости: {round(self.stamina, 1)}/{self.unit_class.max_stamina}"
+        )
 
     def equip_weapon(self, weapon: Weapon) -> str:
         self.weapon = weapon
