@@ -1,39 +1,39 @@
 [
   {
-    "name": "Воин",
+    "name": "Гопломах",
     "max_health": "60.0",
     "max_stamina": "30.0",
     "attack": "0.8",
     "stamina": "0.9",
     "armor": "1.2",
     "skill": {
-      "name": "Свирепый пинок",
+      "name": "Удар щитом",
       "stamina": "6",
       "damage": "12"
     }
   },
   {
-    "name": "Вор",
+    "name": "Бестиарий",
     "max_health": "50.0",
     "max_stamina": "25.0",
     "attack": "1.5",
     "stamina": "1.2",
     "armor": "1.0",
     "skill": {
-      "name": "Мощный укол",
+      "name": "Выпад с копьем",
       "stamina": "5",
       "damage": "15"
     }
   },
   {
-    "name": "Маг",
+    "name": "Фракиец",
     "max_health": "40.0",
     "max_stamina": "16.0",
     "attack": "0.6",
-    "stamina": "2.0",
+    "stamina": "1.5",
     "armor": "0.1",
     "skill": {
-      "name": "Огненный шар",
+      "name": "Бросок кинжала",
       "stamina": "10",
       "damage": "25"
     }
