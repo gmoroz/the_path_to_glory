@@ -6,28 +6,28 @@
 
 ## Регистрация
 
-![registration](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/registration.png)
+![registration](https://github.com/gmoroz/the_path_to_glory/blob/master/readme_files/registration.png)
 
 ## Авторизация
 
-![login](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/login.png)
+![login](https://github.com/gmoroz/the_path_to_glory/blob/master/readme_files/login.png)
 
 ## Главная страница
 
 Доступна только после прохождения авторизации, как и все последующие страницы
 
-![main](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/main.png)
+![main](https://github.com/gmoroz/the_path_to_glory/blob/master/readme_files/main.png)
 
 ## Список лидеров
 
 Выводится топ 5 игроков на сервере
 
-![leaderboard](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/leaderboard.png)
+![leaderboard](https://github.com/gmoroz/the_path_to_glory/blob/master/readme_files/leaderboard.png)
 
 ## Выбор персонажа для игрока и противника
 
-![choose hero and enemy](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/choose_hero_and_enemy.gif)
+![choose hero and enemy](https://github.com/gmoroz/the_path_to_glory/blob/master/readme_files/choose_hero_and_enemy.gif)
 
 ## Процесс боя
 
-![fight](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/fight.gif)
+![fight](https://github.com/gmoroz/the_path_to_glory/blob/master/readme_files/fight.gif)
