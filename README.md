@@ -27,3 +27,7 @@
 ## Выбор персонажа для игрока и противника
 
 ![choose hero and enemy](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/choose_hero_and_enemy.gif)
+
+## Процесс боя
+
+![fight](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/fight.gif)
