@@ -4,8 +4,10 @@ on:
     branches:
       - master
     paths-ignore:
-      - "**/README.md"
       - "/readme_files"
+      - "**.md"
+      - "**.gif"
+      - "**.png"
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
