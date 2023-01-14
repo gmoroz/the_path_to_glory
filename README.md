@@ -20,5 +20,10 @@
 
 ## Список лидеров
 
+Выводится топ 5 игроков на сервере
+
 ![leaderboard](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/leaderboard.png)
 
+## Выбор персонажа для игрока и противника
+
+![choose hero and enemy](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/choose_hero_and_enemy.gif)
