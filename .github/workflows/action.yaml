@@ -1,8 +1,11 @@
-name: build and deploy workflow
-on: [push]
-paths-ignore:
-  - '**/README.md'
-  - '/readme_files'
+name: Build and deploy workflow
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**/README.md"
+      - "/readme_files"
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
