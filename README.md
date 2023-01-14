@@ -17,3 +17,9 @@
 Доступна только после прохождения авторизации, как и все последующие страницы
 
 ![main](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/main.png)
+
+## Список лидеров
+
+![leaderboard](https://github.com/R0ryMercury/the_path_to_glory/blob/master/readme_files/leaderboard.png)
+
+
